@@ -1,0 +1,71 @@
+{
+  "manifest_version": 3,
+  "name": "云开课程连播助手",
+  "version": "1.6.1",
+  "description": "扫描并缓存视频、网上作业与离线提交状态；显示三类进度与待批改明细，支持视频连播和网上作业按批核对。",
+  "minimum_chrome_version": "116",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "alarms"
+  ],
+  "host_permissions": [
+    "https://teach.ynou.edu.cn/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "云开课程助手"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://teach.ynou.edu.cn/*"
+      ],
+      "js": [
+        "chapter-alert.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://teach.ynou.edu.cn/play/playVideo.action*"
+      ],
+      "js": [
+        "diagnostic-bridge.js"
+      ],
+      "run_at": "document_start"
+    },
+    {
+      "matches": [
+        "https://teach.ynou.edu.cn/play/playVideo.action*"
+      ],
+      "js": [
+        "diagnostic-page.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "https://teach.ynou.edu.cn/*"
+      ],
+      "js": [
+        "logic.js",
+        "content.js",
+        "homework-logic.js",
+        "homework-model.js",
+        "homework-content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "optional_host_permissions": [
+    "https://*/*",
+    "http://localhost/*",
+    "http://127.0.0.1/*"
+  ]
+}

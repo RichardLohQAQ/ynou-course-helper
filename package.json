@@ -1,0 +1,22 @@
+{
+  "name": "ynou-course-helper",
+  "version": "1.6.1",
+  "private": true,
+  "description": "云开课程助手：云南开放大学视频连播、网上作业与离线作业进度管理扩展",
+  "license": "MIT",
+  "repository": { "type": "git", "url": "https://github.com/RichardLohQAQ/ynou-course-helper.git" },
+  "homepage": "https://github.com/RichardLohQAQ/ynou-course-helper#readme",
+  "bugs": { "url": "https://github.com/RichardLohQAQ/ynou-course-helper/issues" },
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "check": "node scripts/check.cjs",
+    "test": "node scripts/test.cjs",
+    "build": "node scripts/build.cjs"
+  },
+  "devDependencies": {
+    "fflate": "0.8.3",
+    "jsdom": "26.1.0"
+  }
+}
